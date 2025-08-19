@@ -1,0 +1,69 @@
+# Severity Level Definitions
+# Used for prioritizing and filtering code review issues
+
+severity_levels:
+  critical:
+    priority: 1
+    description: "Security vulnerabilities, data leaks, authorization bypasses"
+    color: "#ff0000"
+    require_immediate_fix: true
+    block_merge: true
+    examples:
+      - "Manual authorization bypass"
+      - "PubSub data leaks"
+      - "SQL injection vulnerabilities"
+      - "Authentication bypasses"
+    
+  high:
+    priority: 2
+    description: "Code quality issues, breaking changes, performance problems"
+    color: "#ff6600"
+    require_immediate_fix: false
+    block_merge: false
+    examples:
+      - "Boolean logic errors"
+      - "Race conditions"
+      - "Memory leaks"
+      - "API breaking changes"
+      
+  medium:
+    priority: 3
+    description: "Maintainability, refactoring opportunities, style violations"
+    color: "#ffcc00"
+    require_immediate_fix: false
+    block_merge: false
+    examples:
+      - "Function complexity"
+      - "Code duplication"
+      - "Style guide violations"
+      - "Missing documentation"
+      
+  low:
+    priority: 4
+    description: "Minor style issues, suggestions, optimizations"
+    color: "#00cc00"
+    require_immediate_fix: false
+    block_merge: false
+    examples:
+      - "Variable naming"
+      - "Formatting consistency"
+      - "Performance micro-optimizations"
+      - "Comment improvements"
+
+# Thresholds for automated actions
+thresholds:
+  block_merge_on_critical: true
+  max_high_severity_issues: 5
+  max_total_issues: 25
+  
+# Time estimates by severity (in minutes)
+time_estimates:
+  critical: 45
+  high: 30
+  medium: 15
+  low: 5
+  
+# Cost calculations (based on developer rate)
+cost_settings:
+  hourly_rate: 150  # USD per hour
+  review_time_multiplier: 1.5  # Additional time for review vs fix

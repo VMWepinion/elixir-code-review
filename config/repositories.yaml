@@ -1,0 +1,46 @@
+# Repository Configuration for Code Review
+# Add target repositories for automated review
+
+default_repository:
+  owner: "Wepinion"
+  name: "wepinion_core"
+  branch: "main"
+  
+repositories:
+  wepinion_core:
+    owner: "Wepinion"
+    name: "wepinion_core"
+    branch: "main"
+    patterns:
+      - "architectural/*"
+      - "file-level/*"
+      - "one-liners/*"
+      - "integrations/ecto/*"
+      - "integrations/phoenix/*"
+      - "integrations/bodyguard/*"
+    file_patterns:
+      - "*.ex"
+      - "*.exs"
+      - "test/**/*.exs"
+    exclude_patterns:
+      - "_build/**"
+      - "deps/**"
+      - "*.beam"
+
+github:
+  api_base: "https://api.github.com"
+  timeout: 30
+  max_retries: 3
+  
+review_settings:
+  max_issues_per_pr: 50
+  group_similar_issues: true
+  include_examples: true
+  create_discussions: true
+  severity_threshold: "medium"  # minimum severity to report
+  
+comment_settings:
+  include_fix_estimates: true
+  include_references: true
+  batch_similar_comments: true
+  max_comments_per_file: 10
